@@ -33,5 +33,10 @@ AND a.Salary > b.Salary;
 SELECT a.Name AS Employee
 FROM Employee AS a 
 JOIN Employee AS b
-ON a.ManagerId = b.Id
+ON a.ManagerId = b.Id. # the order should be a.ManagerID = b.ID not vice versa
 AND a.Salary > b.Salary
+
+# Find employees who are managers
+SELECT DISTINCT a.Id, a.Name
+FROM Employee a
+JOIN Employee bon a.Id = b.ManagerId

@@ -15,10 +15,36 @@
 
 # Write your MySQL query statement below
 
-SELECT (
-	SELECT MAX(Salary) FROM Employee WHERE Salary NOT IN (SELECT MAX(Salary) FROM Employee)
-	   ) SecondHighestSalary;
-# or
+
+SELECT MAX(Salary) AS SecondHighestSalary 
+FROM Employee 
+WHERE Salary NOT IN 
+(
+	SELECT MAX(Salary) 
+	FROM Employee
+);
+
+SELECT MAX(Salary) AS SecondHighestSalary
+FROM Employee
+WHERE Salary < (
+    SELECT MAX(Salary)
+    FROM Employee
+    );
+
+######### Error ########
+
+SELECT MAX(Salary) AS SecondHighestSalary 
+FROM Employee 
+WHERE MAX(Salary) NOT IN   # not need to use MAX() and more important no aggregation in WHERE!
+(
+	SELECT MAX(Salary) 
+	FROM Employee
+);
+
+
+
+
+# Other Option with LIMIT
 SELECT (
 	SELECT Salary FROM Employee GROUP BY Salary ORDER BY Salary DESC LIMIT 1,1
 	   ) SecondHighestSalary;
