@@ -46,3 +46,20 @@ FROM Customers
 LEFT JOIN Orders
 ON Customers.Id = Orders.Id
 WHERE Order.CustomerId IS NULL
+
+# Coding Test: Active but not payers: Create a table to display people who were active but did not pay on each day
+
+SELECT User.Date AS Date, User.memberID AS memberID
+FROM User
+LEFT JOIN Payment
+ON User.memberID = Payment.memberID
+WHERE Payment.Amount IS NULL;
+
+SELECT Date, memberID
+FROM User
+WHERE memberID NOT IN 
+(SELECT memberID FROM Orders);
+
+
+
+

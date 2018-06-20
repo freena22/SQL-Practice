@@ -28,4 +28,12 @@ FROM Weather w1, Weather w2
 WHERE w1.Temperature > w2.Temperature 
 AND TO_DAYS(w1.DATE)- TO_DAYS(w2.DATE)=1;
 
+# My answer 
+SELECT a.Id
+FROM Weather a
+JOIN Weather b
+ON a.Temperature > b.Temperature
+AND TO_DAYS(a.RecordDate) = TO_DAYS(b.RecordDate) + 1;
 
+# 1. Need use TO_DATE to transform the date format
+# 2. OPTION 1 has no join thus more effecient 
