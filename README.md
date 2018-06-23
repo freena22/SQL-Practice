@@ -22,7 +22,7 @@ PostgreSQL: \dt and \d tablename
 MySQL: show tables and describe tablename
 SQLite: .table and .schema tablename
 ```
-## SQLite 
+### SQLite 
 #### Environment Set Up
 ```sh
 $  sqlite3 chinook.db  # use the database
@@ -67,7 +67,26 @@ birth_rate_count = birth_rate_tuple[0][0]
 print(birth_rate_count)
 # Pandas
 pd.read_sql_query()
+
+# Inserts new rowa in DB-API
+
+import sqlite3
+
+db = sqlite3.connect("testdb")
+c = db.cursor()
+c.execute("insert into balloons values ('blue', 'water') ")
+db.commit()  # a commit call
+db.close()
+
 ```
+
+### PostgreSQL
+ 
+
+
+
+
+
 #### Basic SQL Sytax
 ```sh
 QUERT = '''
