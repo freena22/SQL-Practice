@@ -25,6 +25,28 @@ JOIN orders o
 ON o.account_id = a.id;
 
 
+# Two methods of multiple joins
+
+# Option 1
+
+SELECT ordernames.name, count(*) as num
+FROM animals, taxonomy, ordernames
+WHERE animals.species = taxonomy.name
+AND taxonomy.t_order = ordernames.t_order
+GROUP BY ordernames.name
+ORDER BY num DESC;
+
+# Option 1
+
+SELECT ordernames.name, count(*) as num
+FROM (animals JOIN taxonomy 
+              ON animals.species = taxonomy.name) AS ani_tax
+JOIN ordernames
+ON ani_tax.t_order = ordernames.t_order
+GROUP BY ordernames.name
+ORDER BY num desc;
+
+
 ### 2. JOIN Using WHERE or ON
 
 # a. Filtering in the ON clause
