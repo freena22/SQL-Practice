@@ -46,16 +46,14 @@ AND population < (SELECT population FROM world WHERE name = 'Poland');
 
 # Which countries have a GDP greater than every country in Europe
 SELECT name FROM world 
-WHERE gdp > ALL
-(
+WHERE gdp > ALL(
 	SELECT gdp FROM world 
 	WHERE continent='Europe' AND gdp IS NOT NULL
 );
 
 # Select the code that shows the name, region and population of the smallest country in each region
 SELECT region, name, population FROM bbc x 
-WHERE population <= ALL 
-(
+WHERE population <= ALL(
 	SELECT population FROM bbc y WHERE y.region=x.region AND population>0
 );
 
@@ -67,7 +65,7 @@ WHERE population <= ALL
 SELECT Date, memberID
 FROM 
 (
-	SELECT Date, memberID, MAX(Amount)
+    SELECT Date, memberID, MAX(Amount)
     FROM Payment
     GROUP BY Date, memberID
 ) sub;
