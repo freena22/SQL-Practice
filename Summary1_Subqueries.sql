@@ -7,7 +7,7 @@
 
 # below the average
 SELECT Major, Unemployment_rate FROM recent_grads
-WHERE Unemployment_rate < (SELECT AVG(Unemployment_rate) FROM recent_grads)
+WHERE Unemployment_rate < (SELECT AVG(Unemployment_rate) FROM recent_grads)  # return a value
 ORDER BY Unemployment_rate;
 
 # 2nd highest
@@ -25,7 +25,7 @@ FROM world
 WHERE continent IN 
 ( 
 	SELECT continent FROM world
-	WHERE name = 'Brazil' OR name = 'Mexico'
+	WHERE name = 'Brazil' OR name = 'Mexico' # return a list
 );
 
                # PRACTICE #
@@ -59,6 +59,9 @@ WHERE population <= ALL(
 
 
 ### 2. In FROM clause
+
+#### If returning an entire table, then must use an Alias for the table
+#### Should not use an alias when the subquery in a conditional statements since it's treated as a value rather than a table
 
 # Create a table to display the top one payer on each day
 
