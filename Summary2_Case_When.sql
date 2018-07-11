@@ -3,13 +3,14 @@
 
 ### 1. Self Catalogue
 
-SELECT OrderID, Quantity
+SELECT school, sat_math,
 CASE
-    WHEN Quantity > 30 THEN "High"
-    WHEN Quantity = 30 THEN 'Qualify'
-    ELSE "The Quantity is Low"
-END
-FROM OrderDetails;
+    WHEN sat_math > 700 THEN "High"
+    WHEN sat_math > 500 THEN 'Medium'
+    WHEN sat_math < 500 THEN 'Low'
+    ELSE "Outliers"
+END AS math_level
+FROM sat_scores;
 
 
 ### 2. Multiple Catelogue
