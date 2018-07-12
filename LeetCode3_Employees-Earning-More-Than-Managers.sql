@@ -21,6 +21,53 @@
 # | Joe      |
 # +----------+
 
+
+
+############ STEP 1 ###########
+
+SELECT *
+FROM Employee AS a, Employee AS b;
+
+/*  Cartesian product 4*4 = 16 records
+
+Id	Name	Salary	ManagerId	Id	Name	Salary	ManagerId
+1	Joe	    70000	3	        1	Joe	    70000	3
+2	Henry	80000	4	        1	Joe	    70000	3
+3	Sam	    60000		        1	Joe	    70000	3
+4	Max	    90000		        1	Joe	    70000	3
+1	Joe	    70000	3	        2	Henry	80000	4
+2	Henry	80000	4	        2	Henry	80000	4
+3	Sam	    60000		        2	Henry	80000	4
+4	Max	    90000		        2	Henry	80000	4
+1	Joe	    70000	3	        3	Sam	    60000	
+2	Henry	80000	4	        3	Sam	    60000	
+3	Sam	    60000		        3	Sam	    60000	
+4	Max	    90000		        3	Sam	    60000	
+1	Joe	    70000	3	        4	Max	    90000	
+2	Henry	80000	4	        4	Max	    90000	
+3	Sam	    60000		        4	Max	    90000	
+4	Max	    90000		        4	Max	    90000	
+> The first 3 columns are from a and the last 3 ones are from b.	
+
+*/						
+
+
+SELECT
+    *
+FROM
+    Employee AS a,
+    Employee AS b
+WHERE
+    a.ManagerId = b.Id
+AND a.Salary > b.Salary;
+
+
+/*
+Id	Name	Salary	ManagerId	Id	Name	Salary	ManagerId
+1	Joe	     70000	 3	        3 	Sam	    60000	
+*/
+
+
 # Option 1: double the table and set the link to filter
 SELECT a.Name AS 'Employee'
 FROM Employee AS a
