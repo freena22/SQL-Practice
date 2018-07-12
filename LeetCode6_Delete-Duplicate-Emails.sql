@@ -32,7 +32,7 @@ AND a.Id > b.Id;
 # find the bigger id have same email address with other records
 
 
-# Then alter the SELECT to DELTE
+# Then alter the SELECT to DELETE
 DELETE a 
 FROM Person a, Person b
 WHERE a.Email = b.Email 
