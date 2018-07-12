@@ -32,7 +32,8 @@
 # Answer: 
 
 SELECT FirstName, LastName, City, State 
-FROM Person LEFT JOIN Address
+FROM Person 
+LEFT JOIN Address
 ON Person.PersonId = Address.PersonId;
 
 # Simple Join two tables and with full left table
