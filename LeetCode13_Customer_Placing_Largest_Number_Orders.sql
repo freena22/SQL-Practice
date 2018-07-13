@@ -49,6 +49,8 @@ GROUP BY customer_number
 ORDER BY COUNT(*) DESC
 LIMIT 1;
 
+# a effective way in this table: count the customer_number frenquncy alone
+
 # My answer
 SELECT customer_number
 FROM (

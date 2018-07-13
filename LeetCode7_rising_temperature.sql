@@ -1,4 +1,4 @@
-# LeetCode6_rising_temperature
+# LeetCode7_rising_temperature
 
 # Easy
 
