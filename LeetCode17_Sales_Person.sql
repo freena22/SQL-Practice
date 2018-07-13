@@ -62,18 +62,6 @@ so we need to output all the other names in table salesperson.
 */
 
 
-
-SELECT s.name 
-FROM salesperson s
-FULL OUTER orders o
-ON s.sales_id = o.sales_id
-FULL OUTER company c
-ON o.com_id = c.com_id
-WHERE c.com_id != 1;
-
-
-
-
 SELECT s.name
 FROM salesperson s
 WHERE s.sales_id NOT IN 

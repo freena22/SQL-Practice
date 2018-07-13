@@ -26,6 +26,11 @@ Consecutive available seats are more than 2(inclusive) seats consecutively avail
 SELECT DISTINCT a.seat_id
 FROM cinema a 
 JOIN cinema b
-ON abs(a.seat_id - b.seat_id) = 1
-AND a.free = 1 and b.free = 1
+ON abs(a.seat_id - b.seat_id) = 1 # dislocate join 
+AND a.free = 1 
+AND b.free = 1
 ORDER BY a.seat_id;
+
+
+# USE DISTINCT because seat '4' next to '3' and also next to '5'. 
+# So we need to use distinct to filter the duplicated records.
