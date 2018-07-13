@@ -26,20 +26,35 @@ For the sample data above, your query should return the following result.
 |-----------|
 |       0.80|
 
+
+***If there is no requests at all, 
+you should return 0.00 as the accept_rate.
+
+
 Follow-up:
 Can you write a query to return the accept rate but for every month?
 How about the cumulative accept rate for every day?
 */
 
-select
-round(
-    ifnull(
-    (select count(*) from (select distinct requester_id, accepter_id from request_accepted) as A)
+SELECT
+ROUND(
+    IFNULL(
+    (SELECT COUNT(*) FROM (SELECT DISTINCT requester_id, accepter_id FROM request_accepted) AS A)
     /
-    (select count(*) from (select distinct sender_id, send_to_id from friend_request) as B),
+    (SELECT COUNT(*) FROM (SELECT DISTINCT sender_id, send_to_id FROM friend_request) AS B),
     0)
-, 2) as accept_rate;
+, 2) AS accept_rate;
+
+/*
+
+1. A sender sends multiple requests to the same receiver, and a request could be accepted more than once. 
+In this case, the ‘duplicated’ requests or acceptances are only counted once.
+
+2. The total number of requests) could be '0' if the table friend_request is empty. 
+So, we have to utilize ifnull to deal with this special case.
+
+*/
+
 
 # Return an alternative value IF the expression is NULL
-# SELECT IFNULL(NULL, "PASS");
-
+SELECT IFNULL(NULL, "PASS");
