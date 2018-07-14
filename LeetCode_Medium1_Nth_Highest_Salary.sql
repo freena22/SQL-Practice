@@ -1,4 +1,4 @@
-# LeetCode12_Nth_Highest_Salary
+# LeetCode_Medium1_Nth_highest_Salary
 
 # Medium
 
