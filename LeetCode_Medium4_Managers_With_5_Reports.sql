@@ -1,6 +1,6 @@
 # LeetCode_Medium4_Managers_With_5_Reports
 
-# Medium
+# Medium -- Bloomberg
 
 /*
 The Employee table holds all employees including their managers. Every employee has an Id, and there is also a column for the manager Id.
